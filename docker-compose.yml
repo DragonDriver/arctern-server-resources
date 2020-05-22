@@ -1,0 +1,16 @@
+version: '2.3'
+
+services:
+  arctern_zeppelin:
+    image: dragondriver/arctern-0.1.2:latest
+    ports:
+      - "18081:8080"
+    volumes:
+      - /path/to/host_data_folder:/data/arctern
+
+  restful_server:
+    image: dragondriver/arctern-server:latest
+    depends_on:
+      - arctern_zeppelin
+    ports:
+      - "18080:8080"
